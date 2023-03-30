@@ -1,5 +1,6 @@
 import requests
 import connect
+from datetime import datetime
 
 # https://pixe.la/v1/users/ziffic/graphs/graph1.html
 USER_NAME = "ziffic"
@@ -30,10 +31,22 @@ graph_config = {
 # response = requests.post(url=GRAPH_ENDPOINT, json=graph_config, headers=connect.headers)
 # print(response.text)
 
+today = datetime.now()
+
 pixel_config = {
-    "date": "20230330",
-    "quantity": "2.0"
+    "date": today.strftime("%Y%m%d"),
+    "quantity": "3.5"
 }
 
-response = requests.post(url=PIXEL_ENDPOINT, json=pixel_config, headers=connect.headers)
+# response = requests.post(url=PIXEL_ENDPOINT, json=pixel_config, headers=connect.headers)
+# print(response.text)
+
+update_date = datetime(year=2023, month=3, day=29).strftime("%Y%m%d")
+put_endpoint = f"{PIXEL_ENDPOINT}/{update_date}"
+
+pixel_update = {
+    "quantity": "4.0"
+}
+
+response = requests.put(url=put_endpoint, json=pixel_update, headers=connect.headers)
 print(response.text)
