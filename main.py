@@ -48,5 +48,8 @@ pixel_update = {
     "quantity": "4.0"
 }
 
-response = requests.put(url=put_endpoint, json=pixel_update, headers=connect.headers)
+# response = requests.put(url=put_endpoint, json=pixel_update, headers=connect.headers)
+# print(response.text)
+
+response = requests.delete(url=put_endpoint, json=pixel_update, headers=connect.headers)
 print(response.text)
