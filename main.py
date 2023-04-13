@@ -28,14 +28,14 @@ today = datetime.now()
 
 pixel_config = {
     "date": today.strftime("%Y%m%d"),
-    "quantity": input("How many Dr. Peppers did you drink today?")
+    "quantity": input("How many Dr. Peppers did you drink today? ")
 }
 
-response = requests.post(url=connect.PIXEL_ENDPOINT, json=pixel_config, headers=connect.headers)
+response = requests.post(url=connect.PIXELA_ENDPOINT, json=pixel_config, headers=connect.headers)
 print(response.text)
 
 update_date = datetime(year=2023, month=3, day=29).strftime("%Y%m%d")
-put_endpoint = f"{connect.PIXEL_ENDPOINT}/{update_date}"
+put_endpoint = f"{connect.PIXELA_ENDPOINT}/{update_date}"
 
 pixel_update = {
     "quantity": "4.0"
